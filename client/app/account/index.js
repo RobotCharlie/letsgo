@@ -10,7 +10,7 @@ import settings from './settings';
 import signup from './signup';
 import oauthButtons from '../../components/oauth-buttons';
 
-export default angular.module('letsgoApp.account', [uiRouter, login, settings, signup, oauthButtons])
+export default angular.module('letsgo.account', [uiRouter, login, settings, signup, oauthButtons])
   .config(routing)
   .run(function($rootScope) {
     'ngInject';

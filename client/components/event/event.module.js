@@ -1,8 +1,6 @@
-import angular from 'angular';
-import './event.scss';
 import eventComponent from './event.component';
 
-const module = angular.module('letsgoApp.components.event', []);
+const module = angular.module('letsgo.components.event', []);
 
 module.component('event', eventComponent);
 
@@ -12,7 +10,7 @@ module.config($stateProvider => {
 
   $stateProvider
     .state('event', {
-      url: '/event',
+      url: '/events',
       template: '<event></event>'
     });
 });

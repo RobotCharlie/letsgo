@@ -3,6 +3,6 @@
 import angular from 'angular';
 import SignupController from './signup.controller';
 
-export default angular.module('letsgoApp.signup', [])
+export default angular.module('letsgo.signup', [])
   .controller('SignupController', SignupController)
   .name;

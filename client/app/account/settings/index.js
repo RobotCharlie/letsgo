@@ -3,6 +3,6 @@
 import angular from 'angular';
 import SettingsController from './settings.controller';
 
-export default angular.module('letsgoApp.settings', [])
+export default angular.module('letsgo.settings', [])
   .controller('SettingsController', SettingsController)
   .name;

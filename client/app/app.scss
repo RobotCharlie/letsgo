@@ -17,8 +17,12 @@ $fa-font-path: '/assets/fonts/font-awesome/';
   padding: 0.2em 0;
 }
 
+@import '../assets/styles/common.scss';
+
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import '../components/event/event.scss';
+@import '../components/footer/footer.scss';
 /* endinject */

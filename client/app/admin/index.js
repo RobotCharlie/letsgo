@@ -4,7 +4,7 @@ import angular from 'angular';
 import routes from './admin.routes';
 import AdminController from './admin.controller';
 
-export default angular.module('letsgoApp.admin', ['letsgoApp.auth', 'ui.router'])
+export default angular.module('letsgo.admin', ['letsgo.auth', 'ui.router'])
   .config(routes)
   .controller('AdminController', AdminController)
   .name;

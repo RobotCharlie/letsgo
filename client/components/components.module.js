@@ -1,7 +1,6 @@
-import angular from 'angular';
 import Event from './event/event.module';
 
-const module = angular.module('letsgoApp.components', [
+const module = angular.module('letsgo.components', [
   Event
 ]);
 

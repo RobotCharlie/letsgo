@@ -33,7 +33,7 @@ export class MainController {
   }
 }
 
-export default angular.module('letsgoApp.main', [uiRouter])
+export default angular.module('letsgo.main', [uiRouter])
   .config(routing)
   .component('main', {
     template: require('./main.html'),

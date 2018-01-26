@@ -23,9 +23,11 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
+import Components from '../components/components.module';
+
 import './app.scss';
 
-angular.module('letsgoApp', [
+angular.module('letsgo', [
   ngCookies,
   ngResource,
   ngSanitize,
@@ -39,7 +41,8 @@ angular.module('letsgoApp', [
   footer,
   main,
   constants,
-  util
+  util,
+  Components
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
@@ -57,7 +60,7 @@ angular.module('letsgoApp', [
 
 angular.element(document)
   .ready(() => {
-    angular.bootstrap(document, ['letsgoApp'], {
+    angular.bootstrap(document, ['letsgo'], {
       strictDi: true
     });
   });

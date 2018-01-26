@@ -73,6 +73,6 @@ export function Modal($rootScope, $uibModal) {
   };
 }
 
-export default angular.module('letsgoApp.Modal', [])
+export default angular.module('letsgo.Modal', [])
   .factory('Modal', Modal)
   .name;
