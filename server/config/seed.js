@@ -4,15 +4,15 @@
  */
 
 'use strict';
-import Thing from '../api/thing/thing.model';
+import Event from '../api/event/event.model';
 import User from '../api/user/user.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
-    Thing.find({}).remove()
+    Event.find({}).remove()
       .then(() => {
-        let thing = Thing.create({
+        let event = Event.create({
           name: 'Development Tools',
           info: 'Integration with popular tools such as Webpack, Gulp, Babel, TypeScript, Karma, '
                 + 'Mocha, ESLint, Node Inspector, Livereload, Protractor, Pug, '
@@ -40,10 +40,10 @@ export default function seedDatabaseIfNeeded() {
           info: 'Easily deploy your app to Heroku or Openshift with the heroku '
                 + 'and openshift subgenerators'
         });
-        return thing;
+        return event;
       })
-      .then(() => console.log('finished populating things'))
-      .catch(err => console.log('error populating things', err));
+      .then(() => console.log('finished populating events'))
+      .catch(err => console.log('error populating events', err));
 
     User.find({}).remove()
       .then(() => {

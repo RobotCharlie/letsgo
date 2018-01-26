@@ -4,7 +4,7 @@ import routing from './main.routes';
 
 export class MainController {
 
-  awesomeThings = [];
+  awesomeevents = [];
   newThing = '';
 
   /*@ngInject*/
@@ -13,15 +13,15 @@ export class MainController {
   }
 
   $onInit() {
-    this.$http.get('/api/things')
+    this.$http.get('/api/events')
       .then(response => {
-        this.awesomeThings = response.data;
+        this.awesomeevents = response.data;
       });
   }
 
   addThing() {
     if(this.newThing) {
-      this.$http.post('/api/things', {
+      this.$http.post('/api/events', {
         name: this.newThing
       });
       this.newThing = '';
@@ -29,7 +29,7 @@ export class MainController {
   }
 
   deleteThing(thing) {
-    this.$http.delete(`/api/things/${thing._id}`);
+    this.$http.delete(`/api/events/${thing._id}`);
   }
 }
 

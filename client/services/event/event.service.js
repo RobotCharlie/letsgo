@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const BASE_URL = '/api/things';
+const BASE_URL = '/api/events';
 
 export default class {
 
