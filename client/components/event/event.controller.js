@@ -2,12 +2,18 @@ import angular from 'angular';
 
 export default class {
 
-  constructor() {
+  constructor(EventService) {
     'ngInject';
 
     angular.extend(this, {
+      EventService,
+      events: []
     });
   }
 
-  $onInit() {}
+  $onInit() {
+    this.EventService.getEvents().then(res => {
+      this.events = res;
+    });
+  }
 }

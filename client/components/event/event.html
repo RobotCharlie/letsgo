@@ -1,3 +1,13 @@
 <div class="event">
-  eventss
+  <div class="container">
+    <div class="panel-title">Events</div>
+
+    <div class="panel-body">
+      <div class="list-group">
+        <div class="list-group-item" ng-repeat="event in $ctrl.events">
+          <div ng-bind="event.name"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

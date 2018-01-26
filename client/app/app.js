@@ -22,8 +22,10 @@ import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
+import ngIdle from 'ng-idle';
 
 import Components from '../components/components.module';
+import Services from '../services/services.module';
 
 import './app.scss';
 
@@ -31,6 +33,7 @@ angular.module('letsgo', [
   ngCookies,
   ngResource,
   ngSanitize,
+  ngIdle,
   uiRouter,
   uiBootstrap,
   _Auth,
@@ -42,7 +45,8 @@ angular.module('letsgo', [
   main,
   constants,
   util,
-  Components
+  Components,
+  Services
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
