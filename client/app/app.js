@@ -25,8 +25,21 @@ import util from '../components/util/util.module';
 
 import './app.scss';
 
-angular.module('letsgoApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, footer, main, constants, util
+angular.module('letsgoApp', [
+  ngCookies,
+  ngResource,
+  ngSanitize,
+  uiRouter,
+  uiBootstrap,
+  _Auth,
+  account,
+  admin,
+  'validation.match',
+  navbar,
+  footer,
+  main,
+  constants,
+  util
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
