@@ -24,5 +24,7 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
 @import '../components/event/event.scss';
+@import '../components/event/components/event-list/event-list.scss';
+@import '../components/event/components/event-edit/event-edit.scss';
 @import '../components/footer/footer.scss';
 /* endinject */

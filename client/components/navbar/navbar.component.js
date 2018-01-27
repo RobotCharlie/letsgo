@@ -11,7 +11,7 @@ export class NavbarComponent {
     },
     {
       title: 'Events',
-      state: 'event'
+      state: 'event.event-list'
     },
   ];
 
