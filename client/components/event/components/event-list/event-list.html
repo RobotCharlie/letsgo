@@ -1,7 +1,10 @@
 <div class="event-list">
   <div class="container">
+    <cg-breadcrumbs>
+      <cg-crumb title="Events"></cg-crumb>
+    </cg-breadcrumbs>
     <div class="padding">
-      <button type="button" class="btn btn-default">Create</button>
+      <button type="button" class="btn btn-default" ui-sref="event.event-edit">Create</button>
     </div>
     <div class="list-group">
       <div class="list-group-item" ng-repeat="event in $ctrl.events">

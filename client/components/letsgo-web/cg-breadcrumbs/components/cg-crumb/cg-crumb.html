@@ -1,0 +1,4 @@
+<li class="cg-crumb">
+    <a ng-if="$ctrl.target" ng-bind="$ctrl.title" ui-sref="{{ $ctrl.target }}"></a>
+    <span ng-if="!$ctrl.target" ng-bind="$ctrl.title"></span>
+</li>

@@ -1,0 +1,14 @@
+.cg-breadcrumbs {
+  height: 37px;
+
+  .breadcrumb {
+    padding-left: 0;
+    background-color: inherit;
+  }
+
+  .breadcrumb > * + *:before {
+    content: " > ";
+    padding: 0 5px;
+    color: $link-color;
+  }
+}

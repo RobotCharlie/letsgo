@@ -1,13 +1,17 @@
 <div class="event-edit">
   <div class="container">
-    <div class="panel-title">Events</div>
-
-    <div class="panel-body">
-      <div class="list-group">
-        <div class="list-group-item" ng-repeat="event in $ctrl.events">
-          <div ng-bind="event.name"></div>
-        </div>
+  <cg-breadcrumbs>
+    <cg-crumb target="event.event-list" title="Events"></cg-crumb>
+    <cg-crumb title="Create Event"></cg-crumb>
+  </cg-breadcrumbs>
+  <form name="event">
+    <div class="required form-group">
+      <label for="name" class="control-label">Name</label>
+      <div>
+        <input id="name" name="name" class="inline-block form-control input-size-lg"
+               type="text" required maxlength="200"/>
       </div>
     </div>
+  </form>
   </div>
 </div>

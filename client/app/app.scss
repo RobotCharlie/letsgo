@@ -27,4 +27,8 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @import '../components/event/components/event-list/event-list.scss';
 @import '../components/event/components/event-edit/event-edit.scss';
 @import '../components/footer/footer.scss';
+
+// Letsgo Web
+@import '../components/letsgo-web/cg-breadcrumbs/cg-breadcrumbs.scss';
+@import '../components/letsgo-web/cg-breadcrumbs/components/cg-crumb/cg-crumb.scss';
 /* endinject */
