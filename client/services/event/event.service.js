@@ -25,6 +25,6 @@ export default class {
   }
 
   update(event) {
-    return this.ApiService.put(`${BASE_URL}/${event.id}`, event);
+    return this.ApiService.put(`${BASE_URL}/${event._id}`, event);
   }
 }

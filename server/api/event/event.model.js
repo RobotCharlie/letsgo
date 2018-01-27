@@ -7,6 +7,8 @@ var EventSchema = new mongoose.Schema({
   name: String,
   info: String,
   active: Boolean
+}, {
+  versionKey: false
 });
 
 registerEvents(EventSchema);

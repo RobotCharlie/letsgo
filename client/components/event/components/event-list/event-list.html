@@ -8,8 +8,7 @@
     </div>
     <div class="list-group">
       <div class="list-group-item" ng-repeat="event in $ctrl.events">
-        <span ng-bind="event.name"></span>
-        <i class="material-icons pull-right pointer" ui-sref="event.event-edit({id: event._id})">edit</i>
+        <span class="pointer" ng-bind="event.name" ui-sref="event.event-edit({id: event._id})"></span>
       </div>
     </div>
   </div>

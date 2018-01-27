@@ -17,24 +17,24 @@
         <input type="text" class="form-control" id="name" placeholder="Name of The Event" required ng-model="$ctrl.event.name">
       </div>
 
-      <div class="padding-top">
-        <label for="what">What</label>
-        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required></textarea>
-      </div>
+      <!--<div class="padding-top">-->
+        <!--<label for="what">What</label>-->
+        <!--<textarea class="form-control" rows="5" id="what" placeholder="What To Do" required></textarea>-->
+      <!--</div>-->
+
+      <!--<div class="padding-top">-->
+        <!--<label for="when">When</label>-->
+        <!--<input type="text" class="form-control" id="when" placeholder="What Time" required>-->
+      <!--</div>-->
+
+      <!--<div class="padding-top">-->
+        <!--<label for="where">Where</label>-->
+        <!--<input type="text" class="form-control" id="where" placeholder="Where To Go" required>-->
+      <!--</div>-->
 
       <div class="padding-top">
-        <label for="when">When</label>
-        <input type="text" class="form-control" id="when" placeholder="What Time" required>
-      </div>
-
-      <div class="padding-top">
-        <label for="where">Where</label>
-        <input type="text" class="form-control" id="where" placeholder="Where To Go" required>
-      </div>
-
-      <div class="padding-top">
-        <button class="btn btn-primary" type="submit">Save</button>
-        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="btn btn-primary" ng-if="!$ctrl.event._id" type="submit" ng-click="$ctrl.onSaveOrUpdate($ctrl.event)">Save</button>
+        <button class="btn btn-primary" ng-if="$ctrl.event._id" type="submit" ng-click="$ctrl.onSaveOrUpdate($ctrl.event)">Update</button>
         <button class="btn btn-default" ui-sref="event.event-list">Cancel</button>
       </div>
     </form>

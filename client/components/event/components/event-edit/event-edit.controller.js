@@ -22,11 +22,20 @@ export default class {
     });
   }
 
-  onSaveOrUpdate(event) {
-    this.EventService.updateEvent(event).then(() => {
-      this.$state.go('event.event-list');
-    }, (err) => {
-      this.errorMessages.push(err);
-    });
+  onSaveOrUpdate(edit) {
+    console.log(edit);
+    if (this.$state.params.id) {
+      this.EventService.update(edit).then(() => {
+        this.$state.go('event.event-list');
+      }, (err) => {
+        this.errorMessages.push(err);
+      });
+    } else {
+      this.EventService.save(edit).then(() => {
+        this.$state.go('event.event-list');
+      }, (err) => {
+        this.errorMessages.push(err);
+      });
+    }
   }
 }
