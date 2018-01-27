@@ -1,26 +1,11 @@
 <div class="event-list">
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col align-self-end">-->
-        <!--<button type="button" class="btn btn-default">Create</button>-->
-      <!--</div>-->
-      <!--&lt;!&ndash;<div class="list-group">&ndash;&gt;-->
-        <!--&lt;!&ndash;<div class="list-group-item" ng-repeat="event in $ctrl.events">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<div ng-bind="event.name"></div>&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</div>-->
-  <!--</div>-->
   <div class="container">
-    <div class="row">
-      <div class="col align-self-start">
-        One of three columns
-      </div>
-      <div class="col align-self-center">
-        One of three columns
-      </div>
-      <div class="col align-self-end">
-        One of three columns
+    <div class="padding">
+      <button type="button" class="btn btn-default">Create</button>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item" ng-repeat="event in $ctrl.events">
+        <div ng-bind="event.name"></div>
       </div>
     </div>
   </div>

@@ -7,6 +7,7 @@ import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
 import 'angular-validation-match';
 
 import {
@@ -34,6 +35,7 @@ angular.module('letsgo', [
   ngSanitize,
   ngIdle,
   uiRouter,
+  uiBootstrap,
   _Auth,
   account,
   admin,
