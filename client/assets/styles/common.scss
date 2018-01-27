@@ -1,20 +1,28 @@
-.pointer {
-  cursor: pointer;
-}
-
-.padding-top {
-  padding: 20px 0px 0px 0px;
-}
-
-.padding-left {
-  padding: 0px 0px 0px 10px;
-}
-
-.padding {
-  padding: 20px 20px 20px 10px;
-}
-
 .theme {
   font-family: "Glyphicons Halflings";
   background-color: white;
+
+  .btn-default {
+    background-color: $default_color;
+  }
+
+  .btn-primary {
+    background-color: $primary_color;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .padding-top {
+    padding: 20px 0px 0px 0px;
+  }
+
+  .padding-left {
+    padding: 0px 0px 0px 10px;
+  }
+
+  .padding {
+    padding: 20px 20px 20px 10px;
+  }
 }
