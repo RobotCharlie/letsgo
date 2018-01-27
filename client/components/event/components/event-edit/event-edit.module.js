@@ -10,7 +10,7 @@ module.config($stateProvider => {
 
   $stateProvider
     .state('event.event-edit', {
-      url: '/event-edit',
+      url: '/event-edit/:id',
       template: '<event-edit></event-edit>'
     });
 });

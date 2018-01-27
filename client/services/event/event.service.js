@@ -12,11 +12,19 @@ export default class {
     });
   }
 
-  getEvents() {
+  getAll() {
     return this.ApiService.get(`${BASE_URL}`);
   }
 
-  getEvent(id) {
+  get(id) {
     return this.ApiService.get(`${BASE_URL}/${id}`);
+  }
+
+  save(event) {
+    return this.ApiService.post(`${BASE_URL}`, event);
+  }
+
+  update(event) {
+    return this.ApiService.put(`${BASE_URL}/${event.id}`, event);
   }
 }

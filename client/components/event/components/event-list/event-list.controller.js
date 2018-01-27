@@ -12,7 +12,7 @@ export default class {
   }
 
   $onInit() {
-    this.EventService.getEvents().then(res => {
+    this.EventService.getAll().then(res => {
       this.events = res;
     });
   }

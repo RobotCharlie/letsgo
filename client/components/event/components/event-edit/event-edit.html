@@ -1,17 +1,48 @@
 <div class="event-edit">
   <div class="container">
-  <cg-breadcrumbs>
-    <cg-crumb target="event.event-list" title="Events"></cg-crumb>
-    <cg-crumb title="Create Event"></cg-crumb>
-  </cg-breadcrumbs>
-  <form name="event">
-    <div class="required form-group">
-      <label for="name" class="control-label">Name</label>
-      <div>
-        <input id="name" name="name" class="inline-block form-control input-size-lg"
-               type="text" required maxlength="200"/>
+
+    <cg-breadcrumbs>
+      <cg-crumb target="event.event-list" title="Events"></cg-crumb>
+      <cg-crumb title="Create Event"></cg-crumb>
+    </cg-breadcrumbs>
+
+    <div class="padding-left">
+      <label>Owner: </label>
+      <cg-simple-profile user="$ctrl.eventOwner"></cg-simple-profile>
+    </div>
+
+    <form name="event">
+      <div class="padding-top">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name of The Event" required ng-model="$ctrl.event.name">
+      </div>
+
+      <div class="padding-top">
+        <label for="what">What</label>
+        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required></textarea>
+      </div>
+
+      <div class="padding-top">
+        <label for="when">When</label>
+        <input type="text" class="form-control" id="when" placeholder="What Time" required>
+      </div>
+
+      <div class="padding-top">
+        <label for="where">Where</label>
+        <input type="text" class="form-control" id="where" placeholder="Where To Go" required>
+      </div>
+
+      <div class="padding-top">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="btn btn-default" ui-sref="event.event-list">Cancel</button>
+      </div>
+    </form>
+
+    <div ng-if="$ctrl.errorMessages.length > 0">
+      <div ng-repeat="error in $ctrl.errorMessages">
+        <span ng-bind="error"></span>
       </div>
     </div>
-  </form>
   </div>
 </div>

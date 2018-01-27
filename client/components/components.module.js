@@ -1,5 +1,5 @@
 import Event from './event/event.module';
-import LetsgoWeb from './letsgo-web/components.module';
+import LetsgoWeb from './letsgo-web/letsgo-web.module';
 
 const module = angular.module('letsgo.components', [
   Event,

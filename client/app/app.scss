@@ -3,6 +3,7 @@ $icon-font-path: '/assets/fonts/bootstrap/';
 @import '~bootstrap-social/bootstrap-social.scss';
 $fa-font-path: '/assets/fonts/font-awesome/';
 @import '~font-awesome/scss/font-awesome';
+//@import '~material-design-icons/
 
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
 
@@ -29,6 +30,6 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @import '../components/footer/footer.scss';
 
 // Letsgo Web
-@import '../components/letsgo-web/cg-breadcrumbs/cg-breadcrumbs.scss';
-@import '../components/letsgo-web/cg-breadcrumbs/components/cg-crumb/cg-crumb.scss';
+@import '../components/letsgo-web/components/cg-breadcrumbs/cg-breadcrumbs.scss';
+@import '../components/letsgo-web/components/cg-breadcrumbs/components/cg-crumb/cg-crumb.scss';
 /* endinject */

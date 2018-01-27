@@ -1,19 +1,32 @@
 import angular from 'angular';
+import Helper from './event-edit.helper';
 
 export default class {
 
-  constructor(EventService) {
+  constructor($q, $state, EventService) {
     'ngInject';
 
     angular.extend(this, {
+      $state,
       EventService,
-      events: []
+      helper: new Helper($q, EventService),
+      event,
+      eventOwner: { name: 'Charles Gao' },
+      errorMessages: []
     });
   }
 
   $onInit() {
-    this.EventService.getEvents().then(res => {
-      this.events = res;
+    this.helper.getEvent(this.$state.params.id).then(event => {
+      this.event = event;
+    });
+  }
+
+  onSaveOrUpdate(event) {
+    this.EventService.updateEvent(event).then(() => {
+      this.$state.go('event.event-list');
+    }, (err) => {
+      this.errorMessages.push(err);
     });
   }
 }

@@ -1,0 +1,1 @@
+# cg-simple-profile component

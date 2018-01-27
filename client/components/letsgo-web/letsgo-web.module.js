@@ -1,7 +1,7 @@
-import cgBreadcrumbs from './cg-breadcrumbs/cg-breadcrumbs.module';
+import LetsgoWebComponents from './components/components.module';
 
 const module = angular.module('letsgo.components.letsgo-web', [
-  cgBreadcrumbs
+  LetsgoWebComponents
 ]);
 
 export default module.name;
