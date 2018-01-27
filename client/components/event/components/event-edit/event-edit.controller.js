@@ -11,8 +11,8 @@ export default class {
       EventService,
       helper: new Helper($q, EventService),
       event,
-      eventOwner: { name: 'Charles Gao' },
-      errorMessages: []
+      eventOwner: { name: 'Charles Gao', profilePicNum: Math.floor(Math.random() * 12 + 1) },
+      errorMessages: [],
     });
   }
 
