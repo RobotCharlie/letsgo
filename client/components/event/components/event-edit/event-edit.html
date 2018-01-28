@@ -7,11 +7,11 @@
     </cg-breadcrumbs>
 
     <div class="padding-left">
-      <label>Owner: </label>
+      <label>Host: </label>
       <cg-simple-profile user="$ctrl.eventOwner"></cg-simple-profile>
     </div>
 
-    <form name="event-form">
+    <form name="eventForm">
       <div class="padding-top">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Name of The Event" required ng-model="$ctrl.event.name">
@@ -19,23 +19,29 @@
 
       <div class="padding-top">
         <label for="what">What</label>
-        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required></textarea>
+        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required ng-model="$ctrl.event.what"></textarea>
       </div>
 
       <div class="padding-top">
         <label for="when">When</label>
-        <input type="text" class="form-control" id="when" placeholder="What Time" required>
+        <input type="text" class="form-control" id="when" placeholder="What Time" required ng-model="$ctrl.event.when">
       </div>
 
       <div class="padding-top">
         <label for="where">Where</label>
-        <input type="text" class="form-control" id="where" placeholder="Where To Go" required>
+        <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where">
       </div>
 
       <div class="padding-top">
-        <button class="btn btn-primary" ng-if="!$ctrl.event._id" type="submit" ng-click="event-form.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Save</button>
-        <button class="btn btn-primary" ng-if="$ctrl.event._id" type="submit" ng-click="event-form.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Update</button>
+        <button class="btn btn-primary" ng-if="!$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Save</button>
+        <button class="btn btn-primary" ng-if="$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Update</button>
         <button class="btn btn-default" ui-sref="event.event-list">Cancel</button>
+        <div class="padding-top" ng-if="$ctrl.event._id">
+          <button class="btn btn-warning" ui-sref="event.event-list" ng-click="$ctrl.onDelete($ctrl.event._id)">Delete</button>
+          <small class="form-text text-muted">
+            Be careful! You won't be able to find deleted event anymore!
+          </small>
+        </div>
       </div>
     </form>
 

@@ -4,9 +4,12 @@ import mongoose from 'mongoose';
 import {registerEvents} from './event.events';
 
 var EventSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  name: { type: String, required: true },
+  what: { type: String, required: true },
+  when: { type: String, required: true },
+  where: { type: String, required: true },
+  active: { type: Boolean, default: true, required: true},
+  private: { type: Boolean, default: false, required: true },
 }, {
   versionKey: false
 });

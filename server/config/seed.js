@@ -14,31 +14,43 @@ export default function seedDatabaseIfNeeded() {
       .then(() => {
         let event = Event.create({
           name: 'Development Tools',
-          info: 'Integration with popular tools such as Webpack, Gulp, Babel, TypeScript, Karma, '
+          what: 'Integration with popular tools such as Webpack, Gulp, Babel, TypeScript, Karma, '
                 + 'Mocha, ESLint, Node Inspector, Livereload, Protractor, Pug, '
-                + 'Stylus, Sass, and Less.'
+                + 'Stylus, Sass, and Less.',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         }, {
           name: 'Server and Client integration',
-          info: 'Built with a powerful and fun stack: MongoDB, Express, '
-                + 'AngularJS, and Node.'
+          what: 'Built with a powerful and fun stack: MongoDB, Express, '
+                + 'AngularJS, and Node.',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         }, {
           name: 'Smart Build System',
-          info: 'Build system ignores `spec` files, allowing you to keep '
+          what: 'Build system ignores `spec` files, allowing you to keep '
                 + 'tests alongside code. Automatic injection of scripts and '
-                + 'styles into your app.html'
+                + 'styles into your app.html',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         }, {
           name: 'Modular Structure',
-          info: 'Best practice client and server structures allow for more '
-                + 'code reusability and maximum scalability'
+          what: 'Best practice client and server structures allow for more '
+                + 'code reusability and maximum scalability',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         }, {
           name: 'Optimized Build',
-          info: 'Build process packs up your templates as a single JavaScript '
+          what: 'Build process packs up your templates as a single JavaScript '
                 + 'payload, minifies your scripts/css/images, and rewrites asset '
-                + 'names for caching.'
+                + 'names for caching.',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         }, {
           name: 'Deployment Ready',
-          info: 'Easily deploy your app to Heroku or Openshift with the heroku '
-                + 'and openshift subgenerators'
+          what: 'Easily deploy your app to Heroku or Openshift with the heroku '
+                + 'and openshift subgenerators',
+          when: '2018/01/02',
+          where: '1371 Boulder Creek Cres Mississauga, ON'
         });
         return event;
       })

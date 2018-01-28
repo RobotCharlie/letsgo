@@ -23,19 +23,26 @@ export default class {
   }
 
   onSaveOrUpdate(edit) {
-    console.log(edit);
     if (this.$state.params.id) {
       this.EventService.update(edit).then(() => {
         this.$state.go('event.event-list');
-      }, (err) => {
+      }, err => {
         this.errorMessages.push(err);
       });
     } else {
       this.EventService.save(edit).then(() => {
         this.$state.go('event.event-list');
-      }, (err) => {
+      }, err => {
         this.errorMessages.push(err);
       });
     }
+  }
+
+  onDelete(id) {
+    this.EventService.delete(id).then(() => {
+      this.$state.go('event.event-list', { reload: true });
+    }, err => {
+      this.errorMessages.push(err);
+    });
   }
 }
