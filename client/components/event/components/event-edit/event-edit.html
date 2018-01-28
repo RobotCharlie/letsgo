@@ -23,8 +23,28 @@
       </div>
 
       <div class="padding-top">
-        <label for="when">When</label>
-        <input type="text" class="form-control" id="when" placeholder="What Time" required ng-model="$ctrl.event.when">
+        <label>When</label>
+        <p class="input-group">
+          <input type="text" class="form-control"
+                 uib-datepicker-popup="{{'yyyy/MM/dd'}}"
+                 ng-model="$ctrl.selectedDate"
+                 is-open="$ctrl.datepickerPopup.opened"
+                 ng-required="true"
+                 ng-change="$ctrl.onDateTimeChange()"
+                 placeholder="What Date"
+                 close-text="Close"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    ng-click="$ctrl.openDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+
+        <p class="input-group">
+          <div uib-timepicker
+               ng-change="$ctrl.onDateTimeChange()"
+               ng-model="$ctrl.selectedTime" hour-step="1" minute-step="1" show-meridian="false">
+          </div>
+        </p>
       </div>
 
       <div class="padding-top">
