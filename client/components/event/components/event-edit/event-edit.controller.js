@@ -12,7 +12,7 @@ export default class {
       EventService,
       helper: new Helper($q, EventService),
       event,
-      eventOwner: { name: 'Charles Gao', profilePicNum: Math.floor(Math.random() * 12 + 1) },
+      eventHost: { name: 'Charles Gao', profilePicNum: Math.floor(Math.random() * 12 + 1) },
       errorMessages: [],
       selectedDate: moment().toDate(),
       selectedTime: moment().toDate(),
@@ -33,7 +33,7 @@ export default class {
   }
 
   onSaveOrUpdate(edit) {
-    if (this.$state.params.id) {
+    if (this.isNew) {
       this.EventService.update(edit).then(() => {
         this.$state.go('event.event-list');
       }, err => {
