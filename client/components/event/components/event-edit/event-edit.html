@@ -6,9 +6,9 @@
       <cg-crumb title="Create Event"></cg-crumb>
     </cg-breadcrumbs>
 
-    <div class="padding-left">
+    <div class="padding-left" ng-if="$ctrl.event.eventHost._id">
       <label>Host: </label>
-      <cg-simple-profile user="$ctrl.eventHost"></cg-simple-profile>
+      <cg-simple-profile user="$ctrl.event.eventHost"></cg-simple-profile>
     </div>
 
     <form name="eventForm">

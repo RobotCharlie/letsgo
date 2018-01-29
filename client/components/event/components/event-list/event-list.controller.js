@@ -2,12 +2,13 @@ import angular from 'angular';
 
 export default class {
 
-  constructor(EventService) {
+  constructor(Auth, EventService) {
     'ngInject';
 
     angular.extend(this, {
       EventService,
-      events: []
+      events: [],
+      currentUserId: Auth.getCurrentUserSync()._id
     });
   }
 

@@ -4,15 +4,15 @@ import Helper from './event-edit.helper';
 
 export default class {
 
-  constructor($q, $state, EventService) {
+  constructor($q, $state, Auth, EventService) {
     'ngInject';
 
     angular.extend(this, {
       $state,
+      Auth,
       EventService,
       helper: new Helper($q, EventService),
       event,
-      eventHost: { name: 'Charles Gao', profilePicNum: Math.floor(Math.random() * 12 + 1) },
       errorMessages: [],
       selectedDate: moment().toDate(),
       selectedTime: moment().toDate(),
@@ -26,8 +26,9 @@ export default class {
   $onInit() {
     this.helper.getEvent(this.isNew).then(event => {
       this.event = event;
-      if(this.isNew) {
+      if (this.isNew) {
         this.parseWhen(this.event.when);
+        this.event.eventHost = this.Auth.getCurrentUserSync;
       }
     });
   }
