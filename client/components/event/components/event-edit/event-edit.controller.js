@@ -19,23 +19,25 @@ export default class {
       selectedDateTime: moment().toDate(),
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
-      isNew: $state.params.id
+      isNew: !$state.params.id
     });
   }
 
   $onInit() {
-    this.helper.getEvent(this.isNew).then(event => {
+    this.helper.getEvent(this.$state.params.id).then(event => {
       this.event = event;
       if (this.isNew) {
-        this.parseWhen(this.event.when);
-        this.onDateTimeChange();
         this.event.host = this.Auth.getCurrentUserSync();
+      } else {
+        this.parseWhen(this.event.when);
       }
+      this.onDateTimeChange();
+      console.log(this.event);
     });
   }
 
   onSaveOrUpdate(edit) {
-    if (this.isNew) {
+    if (!this.isNew) {
       this.EventService.update(edit).then(() => {
         this.$state.go('event.event-list');
       }, err => {
