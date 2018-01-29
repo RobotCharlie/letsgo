@@ -28,7 +28,8 @@ export default class {
       this.event = event;
       if (this.isNew) {
         this.parseWhen(this.event.when);
-        this.event.eventHost = this.Auth.getCurrentUserSync;
+        this.onDateTimeChange();
+        this.event.host = this.Auth.getCurrentUserSync();
       }
     });
   }

@@ -2,9 +2,11 @@
 
 import mongoose from 'mongoose';
 import {registerEvents} from './event.events';
+var Schema = mongoose.Schema;
 
 var EventSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  host: { type: Schema.Types.ObjectId, ref: 'User', required: false },
   what: { type: String, required: true },
   when: { type: Date, required: true },
   where: { type: String, required: true },

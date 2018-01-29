@@ -13,7 +13,7 @@ export default class {
     _.each(userId, element => {
       sumOfElements = sumOfElements + this.convertToNum(element);
     });
-    const profilePicNum = Math.mod(sumOfElements, NUMBER_OF_PROFILE_PICS);
+    const profilePicNum = sumOfElements % NUMBER_OF_PROFILE_PICS;
     return `assets/images/default-profile-pictures/${profilePicNum}.jpg`;
   }
 
@@ -21,7 +21,7 @@ export default class {
     if(element instanceof Number) {
       return element;
     } else {
-      return element.charCodeAt(0) - 97;
+      return Math.abs(element.charCodeAt(0) - 97);
     }
   }
 }
