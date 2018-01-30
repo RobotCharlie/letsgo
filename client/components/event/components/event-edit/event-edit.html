@@ -14,12 +14,12 @@
     <form name="eventForm">
       <div class="padding-top">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name of The Event" required ng-model="$ctrl.event.name">
+        <input type="text" class="form-control" id="name" placeholder="Name of The Event" required ng-model="$ctrl.event.name" ng-readonly="$ctrl.isReadonly">
       </div>
 
       <div class="padding-top">
         <label for="what">What</label>
-        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required ng-model="$ctrl.event.what"></textarea>
+        <textarea class="form-control" rows="5" id="what" placeholder="What To Do" required ng-model="$ctrl.event.what" ng-readonly="$ctrl.isReadonly"></textarea>
       </div>
 
       <div class="padding-top">
@@ -32,9 +32,10 @@
                  ng-required="true"
                  ng-change="$ctrl.onDateTimeChange()"
                  placeholder="What Date"
-                 close-text="Close"/>
+                 close-text="Close"
+                 ng-readonly="$ctrl.isReadonly"/>
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default"
+            <button type="button" class="btn btn-default" ng-disabled="$ctrl.isReadonly"
                     ng-click="$ctrl.openDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
         </p>
@@ -42,6 +43,7 @@
         <p class="input-group">
           <div uib-timepicker
                ng-change="$ctrl.onDateTimeChange()"
+               ng-disabled="$ctrl.isReadonly"
                ng-model="$ctrl.selectedTime" hour-step="1" minute-step="1" show-meridian="false">
           </div>
         </p>
@@ -49,10 +51,10 @@
 
       <div class="padding-top">
         <label for="where">Where</label>
-        <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where">
+        <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where" ng-readonly="$ctrl.isReadonly">
       </div>
 
-      <div class="padding-top">
+      <div class="padding-top" ng-if="!$ctrl.isReadonly">
         <button class="btn btn-primary" ng-if="!$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Save</button>
         <button class="btn btn-primary" ng-if="$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.onSaveOrUpdate($ctrl.event)">Update</button>
         <button class="btn btn-default" ui-sref="event.event-list">Cancel</button>

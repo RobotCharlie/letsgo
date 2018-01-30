@@ -11,7 +11,7 @@ export default class {
       $state,
       Auth,
       EventService,
-      helper: new Helper($q, EventService),
+      helper: new Helper($q, Auth, EventService),
       event,
       errorMessages: [],
       selectedDate: moment().toDate(),
@@ -19,7 +19,8 @@ export default class {
       selectedDateTime: moment().toDate(),
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
-      isNew: !$state.params.id
+      isNew: !$state.params.id,
+      isReadonly: true
     });
   }
 
@@ -32,7 +33,7 @@ export default class {
         this.parseWhen(this.event.when);
       }
       this.onDateTimeChange();
-      console.log(this.event);
+      this.isReadonly = !this.helper.isAdminOrHost(this.event) && !this.isNew;
     });
   }
 
