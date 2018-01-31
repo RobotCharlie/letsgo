@@ -1,8 +1,8 @@
-import EventEdit from './event-edit/event-edit.module';
+import EventDetail from './event-detail/event-detail.module';
 import EventList from './event-list/event-list.module';
 
 const module = angular.module('letsgo.components.event.components', [
-  EventEdit,
+  EventDetail,
   EventList
 ]);
 

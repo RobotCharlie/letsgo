@@ -1,26 +1,9 @@
-import angular from 'angular';
 import moment from 'moment/moment';
-
-const ROLE_ADMIN = 'admin';
 
 export default class {
 
-  constructor($q, Auth, EventService) {
+  constructor() {
     'ngInject';
-
-    angular.extend(this, {
-      $q,
-      Auth,
-      EventService
-    });
-  }
-
-  getEvent(id) {
-    if (id) {
-      return this.EventService.get(id);
-    } else {
-      return this.$q.when({});
-    }
   }
 
   onDateTimeChange(selectedDate, selectedTime) {
@@ -31,9 +14,5 @@ export default class {
     momentDateTime.set('hour', selectedTime.getHours());
     momentDateTime.set('minute', selectedTime.getMinutes());
     return momentDateTime.toDate();
-  }
-
-  isAdminOrHost(event) {
-    return this.Auth.getCurrentUserSync().role === ROLE_ADMIN || this.Auth.getCurrentUserSync()._id === event.host._id;
   }
 }

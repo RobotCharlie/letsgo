@@ -1,0 +1,35 @@
+<div class="event-detail-display">
+  <form name="eventForm" ng-if="$ctrl.event">
+    <div class="padding-top">
+      <label>Name</label>
+      <div ng-bind="::$ctrl.event.name"></div>
+    </div>
+
+    <div class="padding-top">
+      <label>What</label>
+      <div ng-bind="::$ctrl.event.what"></div>
+    </div>
+
+    <div class="padding-top">
+      <label>When</label>
+      <div ng-bind="$ctrl.displayedWhen"></div>
+    </div>
+
+    <div class="padding-top">
+      <label>Where</label>
+      <div ng-bind="::$ctrl.event.where"></div>
+    </div>
+
+    <!--<div class="padding-top">-->
+      <!--<button class="btn btn-primary" ng-if="!$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.saveOrUpdate($ctrl.event)">Save</button>-->
+      <!--<button class="btn btn-primary" ng-if="$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.saveOrUpdate($ctrl.event)">Update</button>-->
+      <!--<button class="btn btn-default" ui-sref="event.event-list">Cancel</button>-->
+      <!--<div class="padding-top" ng-if="$ctrl.event._id">-->
+        <!--<button class="btn btn-warning" ui-sref="event.event-list" ng-click="$ctrl.delete($ctrl.event._id)">Delete</button>-->
+        <!--<small class="form-text text-muted">-->
+          <!--Be careful! You won't be able to find deleted event anymore!-->
+        <!--</small>-->
+      <!--</div>-->
+    <!--</div>-->
+  </form>
+</div>

@@ -66,7 +66,9 @@ function handleError(res, statusCode) {
 
 // Gets a list of events
 export function index(req, res) {
-  return Event.find().exec()
+  return Event.find()
+    .populate({ path: 'host', select: ['_id', 'name'] })
+    .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
