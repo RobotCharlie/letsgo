@@ -77,6 +77,7 @@ export function index(req, res) {
 export function show(req, res) {
   return Event.findById(req.params.id)
     .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'participants.user', select: ['_id', 'name'] })
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

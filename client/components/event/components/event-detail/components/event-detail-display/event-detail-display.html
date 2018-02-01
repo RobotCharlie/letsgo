@@ -12,7 +12,7 @@
 
     <div class="padding-top">
       <label>When</label>
-      <div ng-bind="$ctrl.displayedWhen"></div>
+      <div ng-bind="::$ctrl.displayedWhen"></div>
     </div>
 
     <div class="padding-top">
@@ -20,16 +20,35 @@
       <div ng-bind="::$ctrl.event.where"></div>
     </div>
 
-    <!--<div class="padding-top">-->
-      <!--<button class="btn btn-primary" ng-if="!$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.saveOrUpdate($ctrl.event)">Save</button>-->
-      <!--<button class="btn btn-primary" ng-if="$ctrl.event._id" ng-click="eventForm.$valid && $ctrl.saveOrUpdate($ctrl.event)">Update</button>-->
-      <!--<button class="btn btn-default" ui-sref="event.event-list">Cancel</button>-->
-      <!--<div class="padding-top" ng-if="$ctrl.event._id">-->
-        <!--<button class="btn btn-warning" ui-sref="event.event-list" ng-click="$ctrl.delete($ctrl.event._id)">Delete</button>-->
-        <!--<small class="form-text text-muted">-->
-          <!--Be careful! You won't be able to find deleted event anymore!-->
-        <!--</small>-->
-      <!--</div>-->
-    <!--</div>-->
+    <div class="padding-top" ng-if="$ctrl.displayActionButtons">
+      <button class="btn btn-primary" ng-if="!$ctrl.isCurrentUserGoing" ng-click="$ctrl.onGoingEvent($ctrl.event)">Going</button>
+      <button class="btn btn-primary" ng-if="$ctrl.isCurrentUserGoing" ng-click="$ctrl.onNotGoingEvent($ctrl.event)">Not Going</button>
+    </div>
+
+    <div class="padding-top" ng-if="$ctrl.displayActionButtons && $ctrl.isCurrentUserGoing">
+      <label>Note</label>
+      <input type="text" class="form-control" ng-model="$ctrl.myNote" placeholder="I will bring drinks!"/>
+      <br/>
+      <button class="btn btn-primary" ng-click="$ctrl.updateMyNote($ctrl.event)">Update Note</button>
+    </div>
+
+    <div class="padding-top">
+      <label>Who</label>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="participant in $ctrl.event.participants">
+            <li>
+              <cg-simple-profile uib-popover="{{participant.note}}" popover-trigger="'mouseenter'" user="participant.user"></cg-simple-profile>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </form>
+
+  <div ng-if="$ctrl.errorMessages.length > 0">
+    <div ng-repeat="error in $ctrl.errorMessages">
+      <span ng-bind="error"></span>
+    </div>
+  </div>
 </div>

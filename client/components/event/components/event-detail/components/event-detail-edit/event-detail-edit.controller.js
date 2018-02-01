@@ -1,14 +1,17 @@
 import angular from 'angular';
 import moment from 'moment';
+import _ from 'lodash';
 import Helper from './event-detail-edit.helper';
 
 export default class {
 
-  constructor() {
+  constructor($state) {
     'ngInject';
 
     angular.extend(this, {
+      $state,
       helper: new Helper(),
+      errorMessages: [],
       selectedDate: moment().toDate(),
       selectedTime: moment().toDate(),
       selectedDateTime: moment().toDate(),
@@ -26,11 +29,19 @@ export default class {
   }
 
   saveOrUpdate(event) {
-    this.onSaveOrUpdate({ $event: event });
+    this.onSaveOrUpdate({ $event: event }).then(() => {
+      this.$state.go('event.event-list');
+    }, err => {
+      this.errorMessages.push(err);
+    });
   }
 
   delete(id) {
-    this.onDelete({ $event: id });
+    this.onDelete({ $event: id }).then(() => {
+      this.$state.go('event.event-list', { reload: true });
+    }, err => {
+      this.errorMessages.push(err);
+    });
   }
 
   parseWhen(when) {
@@ -50,5 +61,9 @@ export default class {
   onDateTimeChange() {
     this.selectedDateTime = this.helper.onDateTimeChange(this.selectedDate, this.selectedTime);
     this.event.when = this.selectedDateTime;
+  }
+
+  removeParticipant(participant) {
+    _.remove(this.event.participants, participant);
   }
 }

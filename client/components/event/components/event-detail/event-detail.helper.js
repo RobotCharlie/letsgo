@@ -1,7 +1,5 @@
 import angular from 'angular';
 
-const ROLE_ADMIN = 'admin';
-
 export default class {
 
   constructor($q, Auth, EventService) {
@@ -23,6 +21,6 @@ export default class {
   }
 
   isAdminOrHost(event) {
-    return this.Auth.getCurrentUserSync().role === ROLE_ADMIN || (event.host && this.Auth.getCurrentUserSync()._id === event.host._id);
+    return this.Auth.isAdminSync() || (event.host && this.Auth.getCurrentUserSync()._id === event.host._id);
   }
 }

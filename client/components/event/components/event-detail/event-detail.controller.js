@@ -15,6 +15,7 @@ export default class {
       errorMessages: [],
       isNew: !$state.params.id,
       isReadonly: true,
+      loaded: false
     });
   }
 
@@ -23,33 +24,29 @@ export default class {
       this.event = event;
       if (this.isNew) {
         this.event.host = this.Auth.getCurrentUserSync();
+        this.pushHostToBeAParticipant(this.event);
       }
       this.isReadonly = !this.helper.isAdminOrHost(this.event) && !this.isNew;
       this.loaded = true;
     });
   }
 
-  onSaveOrUpdate($event) {
+  pushHostToBeAParticipant(event) {
+    if (!event.participant) {
+      event.participants = [];
+    }
+    event.participants.push({ note: '', user: event.host });
+  }
+
+  saveOrUpdate($event) {
     if (!this.isNew) {
-      this.EventService.update($event).then(() => {
-        this.$state.go('event.event-list');
-      }, err => {
-        this.errorMessages.push(err);
-      });
+      return this.EventService.update($event);
     } else {
-      this.EventService.save($event).then(() => {
-        this.$state.go('event.event-list');
-      }, err => {
-        this.errorMessages.push(err);
-      });
+      return this.EventService.save($event);
     }
   }
 
-  onDelete($event) {
-    this.EventService.delete($event).then(() => {
-      this.$state.go('event.event-list', { reload: true });
-    }, err => {
-      this.errorMessages.push(err);
-    });
+  delete($event) {
+    return this.EventService.delete($event);
   }
 }
