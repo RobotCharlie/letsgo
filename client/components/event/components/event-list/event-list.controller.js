@@ -1,4 +1,5 @@
 import angular from 'angular';
+import moment from 'moment/moment';
 
 export default class {
 
@@ -16,5 +17,9 @@ export default class {
     this.EventService.getAll().then(res => {
       this.events = res;
     });
+  }
+
+  getDisplayDate(when) {
+    return moment(when).format('LL');
   }
 }
