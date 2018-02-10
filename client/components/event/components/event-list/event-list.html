@@ -6,20 +6,6 @@
     <div class="padding" ng-if="$ctrl.currentUserId">
       <button type="button" class="btn btn-default" ui-sref="event.event-detail">Create</button>
     </div>
-    <div class="padding-top list-group">
-      <div class="list-group-item" ng-repeat="event in $ctrl.events">
-        <span class="pointer font-weight-bold" ng-bind="event.name" ui-sref="event.event-detail({id: event._id})"></span>
-        <div>
-          <small>Host: </small>
-          <small ng-bind="event.host.name"></small>
-          <span> - </span>
-          <small>Going: </small>
-          <small ng-bind="event.participants.length"></small>
-          <div class="pull-right">
-            <small ng-bind="$ctrl.getDisplayDate(event.when)"></small>
-          </div>
-        </div>
-      </div>
-    </div>
+    <event-list-items events="$ctrl.events"></event-list-items>
   </div>
 </div>

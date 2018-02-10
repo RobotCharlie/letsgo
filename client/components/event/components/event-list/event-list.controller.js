@@ -18,8 +18,4 @@ export default class {
       this.events = res;
     });
   }
-
-  getDisplayDate(when) {
-    return moment(when).format('LL');
-  }
 }
