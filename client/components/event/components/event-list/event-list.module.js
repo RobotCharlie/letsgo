@@ -11,6 +11,9 @@ module.config($stateProvider => {
   $stateProvider
     .state('event.event-list', {
       url: '/event-list',
+      params: {
+        searchText: null
+      },
       template: '<event-list></event-list>'
     });
 });

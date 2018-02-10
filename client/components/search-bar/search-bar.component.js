@@ -5,5 +5,6 @@ export default {
   template,
   controller,
   bindings: {
+    typedText: '<'
   }
 };

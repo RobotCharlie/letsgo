@@ -5,6 +5,7 @@
            ng-model-options="$ctrl.modelOptions"
            placeholder="Search"
            uib-typeahead="option.name for option in $ctrl.options | filter:$viewValue | limitTo:10"
+           typeahead-on-select="$ctrl.change($ctrl.typedText)"
            ng-change="$ctrl.change($ctrl.typedText)"
            class="form-control margin-top">
     <span class="input-group-btn">

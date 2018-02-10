@@ -1,11 +1,13 @@
 <div class="event-list">
-  <div class="container">
+  <div class="container" ng-if="$ctrl.loaded">
     <cg-breadcrumbs>
       <cg-crumb title="Events"></cg-crumb>
     </cg-breadcrumbs>
     <div class="padding" ng-if="$ctrl.currentUserId">
       <button type="button" class="btn btn-default" ui-sref="event.event-detail">Create</button>
     </div>
+    <search-bar typed-text="$ctrl.searchText"></search-bar>
+    <div ng-if="$ctrl.events.length === 0">Your search - {{$ctrl.searchText}} - did not match any documents.</div>
     <event-list-items events="$ctrl.events"></event-list-items>
   </div>
 </div>
