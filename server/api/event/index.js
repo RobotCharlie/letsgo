@@ -1,10 +1,11 @@
 'use strict';
 
-var express = require('express');
+import {Router} from 'express';
 var controller = require('./event.controller');
 
-var router = express.Router();
+var router = new Router();
 
+router.get('/:text/search', controller.search);
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);

@@ -5,6 +5,8 @@ export default {
   template,
   controller,
   bindings: {
-    events: '<'
+    options: '<',
+    onChange: '&?',
+    onSearch: '&?'
   }
 };

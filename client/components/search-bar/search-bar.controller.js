@@ -1,12 +1,26 @@
-import moment from 'moment/moment';
+import angular from 'angular';
 
 export default class {
 
-  constructor() {
+  constructor(EventService) {
     'ngInject';
+
+    angular.extend(this, {
+      EventService,
+      modelOptions: { debounce: { default: 500, blur: 250 }, getterSetter: true },
+      typedText: null,
+      events: []
+    });
   }
 
-  getDisplayDate(when) {
-    return moment(when).format('LL');
+  change(text) {
+    if (text) {
+      this.EventService.search(text).then(res => {
+        this.events = res;
+      });
+    } else {
+      this.event = [];
+    }
+    console.log(this.events);
   }
 }

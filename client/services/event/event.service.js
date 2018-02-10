@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 const BASE_URL = '/api/events';
+const SEARCH = 'search';
 
 export default class {
 
@@ -30,5 +31,9 @@ export default class {
 
   delete(id) {
     return this.ApiService.del(`${BASE_URL}/${id}`);
+  }
+
+  search(text) {
+    return this.ApiService.get(`${BASE_URL}/${text}/${SEARCH}`);
   }
 }

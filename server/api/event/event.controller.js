@@ -120,3 +120,11 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// Search Events from the DB by text
+export function search(req, res) {
+  return Event.find({ name: { $regex: new RegExp(req.params.text, 'i') } }).exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+

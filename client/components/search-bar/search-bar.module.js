@@ -1,7 +1,7 @@
-import eventListItemsComponent from './search-bar.component';
+import searchBarComponent from './search-bar.component';
 
-const module = angular.module('letsgo.components.event.components.event-list-items', []);
+const module = angular.module('letsgo.components.searchBar', []);
 
-module.component('eventListItems', eventListItemsComponent);
+module.component('searchBar', searchBarComponent);
 
 export default module.name;
