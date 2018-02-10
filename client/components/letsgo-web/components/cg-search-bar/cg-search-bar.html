@@ -1,0 +1,15 @@
+<div class="cg-search-bar">
+  <p class="input-group">
+    <input type="text"
+           ng-model="$ctrl.typedText"
+           ng-model-options="$ctrl.modelOptions"
+           placeholder="Search"
+           uib-typeahead="option.name for option in $ctrl.options | filter:$viewValue | limitTo:10"
+           ng-change="$ctrl.change($ctrl.typedText)"
+           class="form-control margin-top">
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-default margin-top"
+              ng-click="$ctrl.search()"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+  </p>
+</div>

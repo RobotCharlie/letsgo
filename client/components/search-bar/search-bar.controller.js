@@ -7,20 +7,22 @@ export default class {
 
     angular.extend(this, {
       EventService,
-      modelOptions: { debounce: { default: 500, blur: 250 }, getterSetter: true },
-      typedText: null,
       events: []
     });
   }
 
-  change(text) {
-    if (text) {
-      this.EventService.search(text).then(res => {
-        this.events = res;
-      });
+  onChange($event) {
+    if ($event) {
+      this.EventService.search($event)
+        .then(res => {
+          this.events = res;
+        });
     } else {
-      this.event = [];
+      this.events = [];
     }
-    console.log(this.events);
+  }
+
+  onSearch() {
+
   }
 }

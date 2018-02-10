@@ -1,15 +1,6 @@
 <div class="search-bar">
-  <p class="input-group col-lg-8 col-lg-offset-2">
-    <input type="text"
-           ng-model="$ctrl.typedText"
-           ng-model-options="$ctrl.modelOptions"
-           placeholder="Search"
-           uib-typeahead="event.name for event in $ctrl.events | filter:$viewValue | limitTo:10"
-           ng-change="$ctrl.change($ctrl.typedText)"
-           class="form-control margin-top">
-    <span class="input-group-btn">
-      <button type="button" class="btn btn-default margin-top"
-              ng-click=""><i class="glyphicon glyphicon-search"></i></button>
-    </span>
-  </p>
+  <cg-search-bar class="margin-top col-lg-8 col-lg-offset-2"
+                 options="$ctrl.events"
+                 on-search="$ctrl.onSearch()"
+                 on-change="$ctrl.onChange($event)"></cg-search-bar>
 </div>
