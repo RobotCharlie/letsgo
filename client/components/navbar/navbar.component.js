@@ -13,6 +13,10 @@ export class NavbarComponent {
       title: 'Events',
       state: 'event.event-list'
     },
+    // {
+    //   title: 'My Events',
+    //   state: 'event.my-events'
+    // },
   ];
 
   isCollapsed = true;
