@@ -1,5 +1,5 @@
 import angular from 'angular';
-import moment from 'moment/moment';
+import Helper from './event-list.helper';
 
 export default class {
 
@@ -8,26 +8,22 @@ export default class {
 
     angular.extend(this, {
       $state,
+      Auth,
       EventService,
+      helper: new Helper(EventService),
       searchText: null,
       events: [],
-      currentUserId: Auth.getCurrentUserSync()._id,
+      currentUser: null,
       loaded: false
     });
   }
 
   $onInit() {
     this.searchText = this.$state.params.searchText;
-    if (this.searchText) {
-      this.EventService.search(this.searchText).then(res => {
-        this.events = res;
-        this.loaded = true;
-      });
-    } else {
-      this.EventService.getAll().then(res => {
-        this.events = res;
-        this.loaded = true;
-      });
-    }
+    this.helper.getEvents(this.searchText).then(events => {
+      this.events = events;
+      this.currentUser = this.Auth.getCurrentUserSync();
+      this.loaded = true;
+    });
   }
 }
