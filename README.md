@@ -1,6 +1,6 @@
 # letsgo
 
-Never Find A Reason Not To Gather Together -- LETSGO
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.3.
 
 ## Getting Started
 
