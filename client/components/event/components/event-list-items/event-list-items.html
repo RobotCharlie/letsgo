@@ -1,7 +1,7 @@
 <div class="event-list-items">
   <div class="padding-top list-group">
     <div class="list-group-item" ng-repeat="event in $ctrl.events">
-      <span class="pointer font-weight-bold" ng-bind="event.name" ui-sref="event.event-detail({id: event._id})"></span>
+      <span class="pointer font-weight-bold" ng-bind="event.name" ui-sref="event.event-detail({id: event._id, searchText: $ctrl.searchText})"></span>
       <div>
         <small>Host: </small>
         <small ng-bind="event.host.name"></small>

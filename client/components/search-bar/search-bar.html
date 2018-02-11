@@ -1,6 +1,6 @@
 <div class="search-bar">
   <cg-search-bar options="$ctrl.events"
                  typed-text="$ctrl.typedText"
-                 on-search="$ctrl.onSearch()"
+                 on-search="$ctrl.onSearch($event)"
                  on-change="$ctrl.onChange($event)"></cg-search-bar>
 </div>

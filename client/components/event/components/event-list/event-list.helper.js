@@ -12,7 +12,7 @@ export default class {
 
   getEvents(searchText) {
     if (searchText) {
-      return this.EventService.search(this.searchText);
+      return this.EventService.search(searchText);
     } else {
       return this.EventService.getAll();
     }

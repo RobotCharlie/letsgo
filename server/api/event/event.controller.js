@@ -123,7 +123,9 @@ export function destroy(req, res) {
 
 // Search Events from the DB by text
 export function search(req, res) {
-  return Event.find({ name: { $regex: new RegExp(req.params.text, 'i') } }).exec()
+  return Event.find({ name: { $regex: new RegExp(req.params.text, 'i') } })
+    .populate({ path: 'host', select: ['_id', 'name'] })
+    .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

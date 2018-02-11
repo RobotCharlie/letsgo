@@ -1,13 +1,13 @@
 <div class="event-detail">
   <div class="container" ng-if="$ctrl.loaded">
     <cg-breadcrumbs>
-      <cg-crumb target="event.event-list" title="Events"></cg-crumb>
+      <cg-crumb target="event.event-list({ searchText: '{{$ctrl.$state.params.searchText}}' })" title="Events"></cg-crumb>
       <cg-crumb ng-if="$ctrl.isNew" title="Create Event"></cg-crumb>
       <cg-crumb ng-if="$ctrl.isReadonly" title="Event Detail"></cg-crumb>
       <cg-crumb ng-if="!$ctrl.isReadonly && !$ctrl.isNew" title="Edit Event"></cg-crumb>
     </cg-breadcrumbs>
 
-    <div class="padding-left" ng-if="$ctrl.event.host._id">
+    <div ng-if="$ctrl.event.host._id">
       <label>Host: </label>
       <cg-simple-profile user="$ctrl.event.host"></cg-simple-profile>
     </div>

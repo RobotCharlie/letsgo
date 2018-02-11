@@ -14,6 +14,9 @@ module.config($stateProvider => {
   $stateProvider
     .state('event.event-detail', {
       url: '/event-detail/:id',
+      params: {
+        searchText: null
+      },
       template: '<event-detail></event-detail>'
     });
 });

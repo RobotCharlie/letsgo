@@ -47,9 +47,18 @@
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="participant in $ctrl.event.participants">
             <li>
               <cg-simple-profile user="participant.user"></cg-simple-profile>
-              <i class="material-icons pointer" ng-click="$ctrl.removeParticipant(participant)">delete_forever</i>
-              <small>note:</small>
-              <input ng-model="participant.note"/>
+              <div ng-if="participant.user._id !== $ctrl.event.host._id">
+                <i class="material-icons pointer" ng-click="$ctrl.removeParticipant(participant)">delete_forever</i>
+                <small>Delete Participant</small>
+              </div>
+              <div ng-if="participant.user._id === $ctrl.event.host._id">
+                <i class="material-icons">home</i>
+                <small>Host(me)</small>
+              </div>
+              <div>
+                <label>Participant note:</label>
+                <input class="form-control" ng-model="participant.note"/>
+              </div>
             </li>
           </ul>
         </div>

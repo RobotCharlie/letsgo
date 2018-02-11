@@ -8,6 +8,6 @@
       <button type="button" class="btn btn-default pull-right" ui-sref="event.event-detail">Create</button>
     </div>
     <div ng-if="$ctrl.events.length === 0">Your search - {{$ctrl.searchText}} - did not match any documents.</div>
-    <event-list-items events="$ctrl.events"></event-list-items>
+    <event-list-items events="$ctrl.events" search-text="$ctrl.searchText"></event-list-items>
   </div>
 </div>

@@ -16,7 +16,7 @@ export default class {
     this.onChange({ $event: text });
   }
 
-  search() {
-    this.onSearch();
+  search(text) {
+    this.onSearch({ $event: text });
   }
 }

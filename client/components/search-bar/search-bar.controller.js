@@ -25,7 +25,7 @@ export default class {
     }
   }
 
-  onSearch() {
-    this.$state.go('event.event-list', { searchText: this.searchText });
+  onSearch($event) {
+    this.$state.go('event.event-list', { searchText: $event });
   }
 }
