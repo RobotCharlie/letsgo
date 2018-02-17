@@ -9,12 +9,4 @@ export default class {
       EventService
     });
   }
-
-  getEvents(searchText) {
-    if (searchText) {
-      return this.EventService.search(searchText);
-    } else {
-      return this.EventService.getAll();
-    }
-  }
 }

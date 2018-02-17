@@ -130,3 +130,21 @@ export function search(req, res) {
     .catch(handleError(res));
 }
 
+// Hosting events from the DB
+export function hosting(req, res) {
+  return Event.find({ host: req.params.host })
+    .populate({ path: 'host', select: ['_id', 'name'] })
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Going events from the DB
+export function going(req, res) {
+  return Event.find({ 'participants.user': req.params.participant })
+    .populate({ path: 'host', select: ['_id', 'name'] })
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+

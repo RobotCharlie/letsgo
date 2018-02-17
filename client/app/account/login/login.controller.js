@@ -13,7 +13,7 @@ export default class LoginController {
 
 
   /*@ngInject*/
-  constructor(Auth, $state) {
+  constructor($state, Auth) {
     this.Auth = Auth;
     this.$state = $state;
   }

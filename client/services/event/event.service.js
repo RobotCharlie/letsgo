@@ -2,6 +2,8 @@ import angular from 'angular';
 
 const BASE_URL = '/api/events';
 const SEARCH = 'search';
+const HOSTING = 'hosting';
+const GOING = 'going';
 
 export default class {
 
@@ -35,5 +37,13 @@ export default class {
 
   search(text) {
     return this.ApiService.get(`${BASE_URL}/${text}/${SEARCH}`);
+  }
+
+  getHostingEventsByHost(host) {
+    return this.ApiService.get(`${BASE_URL}/${host._id}/${HOSTING}`);
+  }
+
+  getGoingEventsByParticipant(participant) {
+    return this.ApiService.get(`${BASE_URL}/${participant._id}/${GOING}`);
   }
 }
