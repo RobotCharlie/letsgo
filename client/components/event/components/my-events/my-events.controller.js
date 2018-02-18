@@ -24,10 +24,12 @@ export default class {
       this.currentUser = currentUser;
       this.$q.all([
         this.EventService.getHostingEventsByHost(this.currentUser),
-        this.EventService.getGoingEventsByParticipant(this.currentUser)
+        this.EventService.getGoingEventsByParticipant(this.currentUser),
+        this.EventService.getFavoriteEventsByUser(this.currentUser)
       ]).then(res => {
         this.myHostingEvents = res[0];
         this.myGoingEvents = res[1];
+        this.myFavoriteEvents = res[2];
         this.loaded = true;
       });
     });

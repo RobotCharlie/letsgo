@@ -4,6 +4,7 @@ const BASE_URL = '/api/events';
 const SEARCH = 'search';
 const HOSTING = 'hosting';
 const GOING = 'going';
+const FAVORITE = 'favorite';
 
 export default class {
 
@@ -45,5 +46,9 @@ export default class {
 
   getGoingEventsByParticipant(participant) {
     return this.ApiService.get(`${BASE_URL}/${participant._id}/${GOING}`);
+  }
+
+  getFavoriteEventsByUser(user) {
+    return this.ApiService.get(`${BASE_URL}/${user._id}/${FAVORITE}`);
   }
 }

@@ -1,4 +1,11 @@
 <div class="event-detail-display">
+
+  <button ng-if="$ctrl.isLoggedIn" class="btn btn-default pull-right"
+          ng-click="$ctrl.onFavoriteChange(!$ctrl.isFavorite, $ctrl.event)">
+    <i ng-if="$ctrl.isFavorite" class="material-icons">favorite</i>
+    <i ng-if="!$ctrl.isFavorite" class="material-icons">favorite_border</i>
+  </button>
+
   <form name="eventForm" ng-if="$ctrl.event">
     <div class="padding-top">
       <label>Name</label>

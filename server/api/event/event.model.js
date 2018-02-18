@@ -12,6 +12,7 @@ var EventSchema = new mongoose.Schema({
     note: String,
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
   }],
+  favoritesBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   what: { type: String, required: true },
   when: { type: Date, required: true },
   where: { type: String, required: true },

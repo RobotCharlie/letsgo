@@ -148,3 +148,12 @@ export function going(req, res) {
     .catch(handleError(res));
 }
 
+// Favorite events from the DB
+export function favorite(req, res) {
+  return Event.find({ favoritesBy: req.params.user })
+    .populate({ path: 'host', select: ['_id', 'name'] })
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+

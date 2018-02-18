@@ -16,25 +16,29 @@ export default class {
       displayedWhen: null,
       displayActionButtons: false,
       isCurrentUserGoing: null,
-      myNote: null
+      myNote: null,
+      isFavorite: false,
+      isLoggedIn: Auth.isLoggedInSync(),
+      currentUser: Auth.getCurrentUserSync()
     });
   }
 
   $onInit() {
     this.displayedWhen = moment(this.event.when).format('LLLL');
-    this.displayActionButtons = this.Auth.isLoggedInSync() && this.event.host && this.Auth.getCurrentUserSync() !== this.event.host;
-    this.isCurrentUserGoing =  !!this.helper.getMeAsParticipant(this.event);
+    this.displayActionButtons = this.isLoggedIn && this.event.host && this.currentUser !== this.event.host;
+    this.isCurrentUserGoing = !!this.helper.getMeAsParticipant(this.event);
     this.myNote = this.helper.getMyNote(this.event);
+    this.isFavorite = _.includes(this.event.favoritesBy, this.currentUser._id);
   }
 
   onGoingEvent(event) {
-    event.participants.push({ note: '', user: this.Auth.getCurrentUserSync()});
+    event.participants.push({ note: '', user: this.currentUser});
     this.updateEvent(event);
   }
 
   onNotGoingEvent(event) {
     _.remove(event.participants, participant => {
-      return participant.user._id === this.Auth.getCurrentUserSync()._id;
+      return participant.user._id === this.Auth.currentUser._id;
     });
     this.updateEvent(event);
   }
@@ -50,6 +54,15 @@ export default class {
   updateMyNote(event) {
     const meAsParticipant = this.helper.getMeAsParticipant(event);
     meAsParticipant.note = this.myNote;
+    this.updateEvent(event);
+  }
+
+  onFavoriteChange(isFavorite, event) {
+    if (isFavorite) {
+      event.favoritesBy.push(this.currentUser);
+    } else {
+      _.pull(event.favoritesBy, this.currentUser._id);
+    }
     this.updateEvent(event);
   }
 }
