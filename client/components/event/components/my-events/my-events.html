@@ -6,15 +6,15 @@
 
     <uib-tabset>
       <uib-tab index="0" heading="I'm Going">
-        <div ng-if="$ctrl.myGoingEvents.length === 0">Your do have any events to go. Try find one that you interested in!</div>
+        <div ng-if="$ctrl.myGoingEvents.length === 0">You do have any events to go. Try find one that you interested in!</div>
         <event-list-items events="$ctrl.myGoingEvents"></event-list-items>
       </uib-tab>
       <uib-tab index="1" heading="I'm Hosting">
-        <div ng-if="$ctrl.myHostingEvents.length === 0">Your do not host any events. Why don't you create one!</div>
+        <div ng-if="$ctrl.myHostingEvents.length === 0">You do not host any events. Why don't you create one!</div>
         <event-list-items events="$ctrl.myHostingEvents"></event-list-items>
       </uib-tab>
       <uib-tab index="2" heading="My Favorites">
-        <div ng-if="$ctrl.myFavoriteEvents.length === 0">Your do not have any favorites events.</div>
+        <div ng-if="$ctrl.myFavoriteEvents.length === 0">You do not have any favorites events.</div>
         <event-list-items events="$ctrl.myFavoriteEvents"></event-list-items>
       </uib-tab>
     </uib-tabset>

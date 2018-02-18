@@ -2,8 +2,9 @@
 
   <button ng-if="$ctrl.isLoggedIn" class="btn btn-default pull-right"
           ng-click="$ctrl.onFavoriteChange(!$ctrl.isFavorite, $ctrl.event)">
-    <i ng-if="$ctrl.isFavorite" class="material-icons">favorite</i>
-    <i ng-if="!$ctrl.isFavorite" class="material-icons">favorite_border</i>
+    <i ng-if="$ctrl.isFavorite" class="material-icons red">favorite</i>
+    <i ng-if="!$ctrl.isFavorite" class="material-icons red">favorite_border</i>
+    <span ng-bind="$ctrl.event.favoritesBy.length"></span>
   </button>
 
   <form name="eventForm" ng-if="$ctrl.event">
