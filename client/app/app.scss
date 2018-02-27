@@ -22,16 +22,21 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 
 // Component styles are injected through gulp
 /* inject:scss */
-@import 'admin/admin.scss';
-@import 'main/main.scss';
-@import '../components/event/event.scss';
-@import '../components/event/components/event-list/event-list.scss';
-@import '../components/event/components/event-list-items/event-list-items.scss';
-@import '../components/event/components/event-detail/event-detail';
+@import 'admin/admin';
+@import 'main/main';
 @import '../components/event/components/event-detail/components/event-detail-display/event-detail-display';
-@import '../components/footer/footer.scss';
-
-// Letsgo Web
-@import '../components/letsgo-web/components/cg-breadcrumbs/cg-breadcrumbs.scss';
-@import '../components/letsgo-web/components/cg-breadcrumbs/components/cg-crumb/cg-crumb.scss';
+@import '../components/event/components/event-detail/components/event-detail-edit/event-detail-edit';
+@import '../components/event/components/event-detail/event-detail';
+@import '../components/event/components/event-list-items/event-list-items';
+@import '../components/event/components/event-list/event-list';
+@import '../components/event/components/my-events/my-events';
+@import '../components/event/event';
+@import '../components/footer/footer';
+@import '../components/letsgo-web/components/cg-breadcrumbs/cg-breadcrumbs';
+@import '../components/letsgo-web/components/cg-breadcrumbs/components/cg-crumb/cg-crumb';
+@import '../components/letsgo-web/components/cg-search-bar/cg-search-bar';
+@import '../components/letsgo-web/components/cg-simple-profile/cg-simple-profile';
+@import '../components/modal/modal';
+@import '../components/oauth-buttons/oauth-buttons';
+@import '../components/search-bar/search-bar';
 /* endinject */
