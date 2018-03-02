@@ -40,6 +40,8 @@ angular.module('letsgo', [
   account,
   admin,
   'validation.match',
+  'uiGmapgoogle-maps',
+  'nemLogging',
   navbar,
   footer,
   main,
@@ -49,6 +51,15 @@ angular.module('letsgo', [
   Services
 ])
   .config(routeConfig)
+  .config(function(uiGmapGoogleMapApiProvider) {
+    'ngInject';
+
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyBh2WK9m1jSVp2ISycn5G98tiFKwF7s_nY',
+      v: '3.29', //defaults to latest 3.X anyhow
+      libraries: 'weather,geometry,visualization'
+    });
+  })
   .run(function($rootScope, $location, Auth) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in

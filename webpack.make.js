@@ -51,7 +51,10 @@ module.exports = function makeWebpackConfig(options) {
 
                 'angular-ui-bootstrap',
                 'angular-ui-router',
-                'lodash'
+                'lodash',
+
+                'angular-google-maps',
+                'angular-simple-logger'
             ]
         };
     }

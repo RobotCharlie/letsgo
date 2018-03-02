@@ -5,7 +5,7 @@ import Helper from './event-detail-edit.helper';
 
 export default class {
 
-  constructor($state) {
+  constructor($state, $scope, uiGmapGoogleMapApi) {
     'ngInject';
 
     angular.extend(this, {
@@ -17,7 +17,12 @@ export default class {
       selectedDateTime: moment().toDate(),
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
-      isReadonly: true
+      isReadonly: true,
+      map: { center: { latitude: 45, longitude: -73 }, zoom: 8 },
+    });
+
+    uiGmapGoogleMapApi.then(maps => {
+      console.log(maps);
     });
   }
 
