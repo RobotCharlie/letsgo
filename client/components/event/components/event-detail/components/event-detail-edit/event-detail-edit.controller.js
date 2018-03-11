@@ -5,11 +5,12 @@ import Helper from './event-detail-edit.helper';
 
 export default class {
 
-  constructor($state, $scope, uiGmapGoogleMapApi) {
+  constructor($state, $scope, uiGmapGoogleMapApi, uiGmapIsReady) {
     'ngInject';
 
     angular.extend(this, {
       $state,
+      uiGmapIsReady,
       helper: new Helper(),
       errorMessages: [],
       selectedDate: moment().toDate(),
@@ -18,11 +19,12 @@ export default class {
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
       isReadonly: true,
-      map: { center: { latitude: 45, longitude: -73 }, zoom: 8 },
+      map: { center: { latitude: 43.6, longitude: -79.3 }, zoom: 8, markers: [], control: {} },
+      geocoder: null,
     });
 
-    uiGmapGoogleMapApi.then(maps => {
-      console.log(maps);
+    uiGmapGoogleMapApi.then(mapApi => {
+      this.geocoder = new mapApi.Geocoder();
     });
   }
 
@@ -70,5 +72,32 @@ export default class {
 
   removeParticipant(participant) {
     _.remove(this.event.participants, participant);
+  }
+
+  geocode(address) {
+    if (!address) {
+      return;
+    }
+    this.geocoder.geocode({ address }, (results, status) => {
+      if (status == 'OK') {
+        let location = results[0].geometry.location;
+        this.map.center.latitude = location.lat();
+        this.map.center.longitude = location.lng();
+        this.map.zoom = this.helper.getGoogleMapDefaultParams().zoom;
+        this.map.marker = {
+          coords: {
+            latitude: this.map.center.latitude,
+            longitude: this.map.center.longitude
+          }
+        };
+        this.uiGmapIsReady.promise()
+          .then(() => {
+            this.map.markers.push({ idKey: 1, coords: {latitude: this.map.center.latitude, longitude: this.map.center.longitude}});
+            this.map.control.refresh({latitude: this.map.center.latitude, longitude: this.map.center.longitude});
+          });
+      } else {
+        this.errorMessages.push('Geocode was not successful for the following reason: ' + status);
+      }
+    });
   }
 }

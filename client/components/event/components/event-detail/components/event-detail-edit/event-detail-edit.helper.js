@@ -15,4 +15,8 @@ export default class {
     momentDateTime.set('minute', selectedTime.getMinutes());
     return momentDateTime.toDate();
   }
+
+  getGoogleMapDefaultParams() {
+    return { zoom: 15 };
+  }
 }
