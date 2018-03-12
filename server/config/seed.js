@@ -21,8 +21,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         }, {
@@ -33,8 +33,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         }, {
@@ -46,8 +46,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         }, {
@@ -58,8 +58,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         }, {
@@ -71,8 +71,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         }, {
@@ -83,8 +83,8 @@ export default function seedDatabaseIfNeeded() {
           where: {
             address: '1371 Boulder Creek Cres Mississauga, ON',
             location: {
-              latitude: 43.6,
-              longitude: -79.3
+              latitude: 43.5239404,
+              longitude: -79.61316850000003
             }
           }
         });

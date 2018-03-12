@@ -40,7 +40,7 @@ export default class {
 
   onNotGoingEvent(event) {
     _.remove(event.participants, participant => {
-      return participant.user._id === this.Auth.currentUser._id;
+      return participant.user._id === this.currentUser._id;
     });
     this.updateEvent(event);
   }

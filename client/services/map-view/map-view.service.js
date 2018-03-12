@@ -1,8 +1,8 @@
 import angular from 'angular';
 
 const TORONTO_LOCATION = Object.freeze({
-  latitude: 43.6,
-  longitude: -79.3
+  latitude: 43.653226,
+  longitude: -79.38318429999998
 });
 
 const ZOOM = Object.freeze({
