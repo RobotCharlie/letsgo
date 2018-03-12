@@ -37,7 +37,7 @@
 
     <div class="padding-top">
       <label for="where">Where</label>
-      <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where" ng-blur="$ctrl.geocode($ctrl.event.where)">
+      <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where.address" ng-blur="$ctrl.geocode($ctrl.event.where.address)">
     </div>
     <div class="padding-top">
       <ui-gmap-google-map class="angular-google-map-container" center='$ctrl.map.center' zoom='$ctrl.map.zoom'>

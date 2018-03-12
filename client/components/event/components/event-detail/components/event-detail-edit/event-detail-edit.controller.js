@@ -10,8 +10,7 @@ export default class {
 
     angular.extend(this, {
       $state,
-      uiGmapIsReady,
-      helper: new Helper(),
+      helper: new Helper(uiGmapIsReady),
       errorMessages: [],
       selectedDate: moment().toDate(),
       selectedTime: moment().toDate(),
@@ -19,8 +18,8 @@ export default class {
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
       isReadonly: true,
-      map: { center: { latitude: 43.6, longitude: -79.3 }, zoom: 8, markers: [], control: {} },
-      geocoder: null,
+      map: new Helper(uiGmapIsReady).getMapParams(),
+      geocoder: null
     });
 
     uiGmapGoogleMapApi.then(mapApi => {
@@ -29,10 +28,16 @@ export default class {
   }
 
   $onInit() {
-    if (this.event._id) {
+    if(this.event._id) {
       this.parseWhen(this.event.when);
+    } else {
+      // init fields for new event that will be initialized through ng-model
+      this.event.where = {
+        location: { latitude: null, longitude: null }
+      };
     }
     this.onDateTimeChange();
+    this.helper.refreshMap(this.event.where, this.map);
   }
 
   saveOrUpdate(event) {
@@ -75,27 +80,17 @@ export default class {
   }
 
   geocode(address) {
-    if (!address) {
+    if(!address) {
       return;
     }
     this.geocoder.geocode({ address }, (results, status) => {
-      if (status == 'OK') {
-        let location = results[0].geometry.location;
-        this.map.center.latitude = location.lat();
-        this.map.center.longitude = location.lng();
-        this.map.zoom = this.helper.getGoogleMapDefaultParams().zoom;
-        this.map.marker = {
-          coords: {
-            latitude: this.map.center.latitude,
-            longitude: this.map.center.longitude
-          }
-        };
-        this.uiGmapIsReady.promise()
-          .then(() => {
-            this.map.markers.push({ idKey: 1, coords: {latitude: this.map.center.latitude, longitude: this.map.center.longitude}});
-            this.map.control.refresh({latitude: this.map.center.latitude, longitude: this.map.center.longitude});
-          });
+      if(status == 'OK') {
+        const location = results[0].geometry.location;
+        this.event.where.location.latitude = location.lat();
+        this.event.where.location.longitude = location.lng();
+        this.helper.refreshMap(this.event.where, this.map);
       } else {
+        this.helper.refreshMap(this.event.where, this.map);
         this.errorMessages.push('Geocode was not successful for the following reason: ' + status);
       }
     });
