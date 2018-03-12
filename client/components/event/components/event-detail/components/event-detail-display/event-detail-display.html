@@ -27,6 +27,11 @@
       <label>Where</label>
       <div ng-bind="::$ctrl.event.where.address"></div>
     </div>
+    <div class="padding-top">
+      <ui-gmap-google-map class="angular-google-map-container" center='$ctrl.map.center' zoom='$ctrl.map.zoom'>
+        <ui-gmap-markers models="$ctrl.map.markers" coords="'coords'" idKey="'idKey'"></ui-gmap-markers>
+      </ui-gmap-google-map>
+    </div>
 
     <div class="padding-top" ng-if="$ctrl.displayActionButtons">
       <button class="btn btn-primary" ng-if="!$ctrl.isCurrentUserGoing" ng-click="$ctrl.onGoingEvent($ctrl.event)">Going</button>

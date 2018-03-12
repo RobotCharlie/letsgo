@@ -3,11 +3,12 @@ import angular from 'angular';
 
 export default class {
 
-  constructor(uiGmapIsReady) {
+  constructor(uiGmapIsReady, MapViewService) {
     'ngInject';
 
     angular.extend(this, {
-      uiGmapIsReady
+      uiGmapIsReady,
+      MapViewService
     });
   }
 
@@ -21,20 +22,20 @@ export default class {
     return momentDateTime.toDate();
   }
 
-  getMapParams() {
-    return { center: { latitude: 43.6, longitude: -79.3 }, zoom: 8, markers: [], control: {} };
-  }
-
   refreshMap(where, map) {
     if (where.location.latitude && where.location.longitude) {
+      const isDefaultLocation = this.MapViewService.isDefaultLocation(where.location);
+      map.zoom = this.MapViewService.getMapZoom({ zoomIn: !isDefaultLocation });
       map.center = where.location;
-      map.zoom = 15;
-    } else {
-      map = this.getMapParams();
+
+      // Only add marker to non-default location
+      this.uiGmapIsReady.promise()
+        .then(() => {
+          map.markers = [];
+          if (!isDefaultLocation) {
+            map.markers.push({ idKey: 1, coords: {latitude: map.center.latitude, longitude: map.center.longitude}});
+          }
+        });
     }
-    this.uiGmapIsReady.promise()
-      .then(() => {
-        map.markers.push({ idKey: 1, coords: {latitude: map.center.latitude, longitude: map.center.longitude}});
-      });
   }
 }

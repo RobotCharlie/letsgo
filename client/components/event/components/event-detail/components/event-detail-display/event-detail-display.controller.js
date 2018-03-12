@@ -5,13 +5,13 @@ import Helper from './event-detail-display.helper';
 
 export default class {
 
-  constructor($state, Auth) {
+  constructor($state, uiGmapIsReady, Auth, MapViewService) {
     'ngInject';
 
     angular.extend(this, {
       $state,
       Auth,
-      helper: new Helper(Auth),
+      helper: new Helper(Auth, uiGmapIsReady, MapViewService),
       errorMessages: [],
       displayedWhen: null,
       displayActionButtons: false,
@@ -19,7 +19,8 @@ export default class {
       myNote: null,
       isFavorite: false,
       isLoggedIn: Auth.isLoggedInSync(),
-      currentUser: Auth.getCurrentUserSync()
+      currentUser: Auth.getCurrentUserSync(),
+      map: MapViewService.getMapParams({ zoomIn: false })
     });
   }
 
@@ -29,6 +30,7 @@ export default class {
     this.isCurrentUserGoing = !!this.helper.getMeAsParticipant(this.event);
     this.myNote = this.helper.getMyNote(this.event);
     this.isFavorite = _.includes(this.event.favoritesBy, this.currentUser._id);
+    this.helper.refreshMap(this.event.where, this.map);
   }
 
   onGoingEvent(event) {

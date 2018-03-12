@@ -5,12 +5,13 @@ import Helper from './event-detail-edit.helper';
 
 export default class {
 
-  constructor($state, $scope, uiGmapGoogleMapApi, uiGmapIsReady) {
+  constructor($state, $scope, uiGmapGoogleMapApi, uiGmapIsReady, MapViewService) {
     'ngInject';
 
     angular.extend(this, {
       $state,
-      helper: new Helper(uiGmapIsReady),
+      MapViewService,
+      helper: new Helper(uiGmapIsReady, MapViewService),
       errorMessages: [],
       selectedDate: moment().toDate(),
       selectedTime: moment().toDate(),
@@ -18,7 +19,7 @@ export default class {
       datepickerPopup: { opened: false },
       timepickerPopup: { opened: false },
       isReadonly: true,
-      map: new Helper(uiGmapIsReady).getMapParams(),
+      map: MapViewService.getMapParams({ zoomIn: false }),
       geocoder: null
     });
 
@@ -30,6 +31,7 @@ export default class {
   $onInit() {
     if(this.event._id) {
       this.parseWhen(this.event.when);
+      this.map = this.MapViewService.getMapParams({ zoomIn: true });
     } else {
       // init fields for new event that will be initialized through ng-model
       this.event.where = {
@@ -80,9 +82,6 @@ export default class {
   }
 
   geocode(address) {
-    if(!address) {
-      return;
-    }
     this.geocoder.geocode({ address }, (results, status) => {
       if(status == 'OK') {
         const location = results[0].geometry.location;
@@ -90,6 +89,9 @@ export default class {
         this.event.where.location.longitude = location.lng();
         this.helper.refreshMap(this.event.where, this.map);
       } else {
+        const location = this.MapViewService.getDefaultLocation();
+        this.event.where.location.latitude = location.latitude;
+        this.event.where.location.longitude = location.longitude;
         this.helper.refreshMap(this.event.where, this.map);
         this.errorMessages.push('Geocode was not successful for the following reason: ' + status);
       }
