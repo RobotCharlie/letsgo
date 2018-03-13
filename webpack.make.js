@@ -54,7 +54,9 @@ module.exports = function makeWebpackConfig(options) {
                 'lodash',
 
                 'angular-google-maps',
-                'angular-simple-logger'
+                'angular-simple-logger',
+                'angular-qrcode',
+                'qrcode-generator'
             ]
         };
     }

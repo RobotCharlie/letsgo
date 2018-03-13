@@ -23,9 +23,14 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import ngIdle from 'ng-idle';
-
 import Components from '../components/components.module';
 import Services from '../services/services.module';
+import qrcode from 'qrcode-generator';
+import ngQrcode from 'angular-qrcode';
+// hacks for the browser
+// if using webpack there is a better solution below
+window.qrcode = qrcode;
+require('../../node_modules/qrcode-generator/qrcode_UTF8');
 
 import './app.scss';
 
@@ -42,6 +47,8 @@ angular.module('letsgo', [
   'validation.match',
   'uiGmapgoogle-maps',
   'nemLogging',
+  'monospaced.qrcode',
+  ngQrcode,
   navbar,
   footer,
   main,
