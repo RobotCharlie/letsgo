@@ -1,11 +1,4 @@
 <div class="event-detail-display">
-  <div class="btn-group pull-right padding-left" uib-dropdown keyboard-nav>
-    <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary action-btn" uib-dropdown-toggle>Share&nbsp;<span class="caret"></span></button>
-    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-      <li role="menuitem" ng-click="$ctrl.openModal()"><a href="#">QR Code</a></li>
-    </ul>
-  </div>
-
   <button ng-if="$ctrl.isLoggedIn" class="btn btn-default action-btn pull-right"
           ng-click="$ctrl.onFavoriteChange(!$ctrl.isFavorite, $ctrl.event)">
     <i ng-if="$ctrl.isFavorite" class="material-icons red">favorite</i>

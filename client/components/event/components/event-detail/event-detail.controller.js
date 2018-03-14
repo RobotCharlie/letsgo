@@ -1,13 +1,15 @@
 import angular from 'angular';
 import Helper from './event-detail.helper';
+import QrTemplate from './templates/qr-code/qr-code.html';
 
 export default class {
 
-  constructor($q, $state, Auth, EventService) {
+  constructor($q, $state, $uibModal, Auth, EventService) {
     'ngInject';
 
     angular.extend(this, {
       $state,
+      $uibModal,
       Auth,
       EventService,
       helper: new Helper($q, Auth, EventService),
@@ -48,5 +50,19 @@ export default class {
 
   delete($event) {
     return this.EventService.delete($event);
+  }
+
+  openModal() {
+    this.$uibModal.open({
+      animation: true,
+      template: QrTemplate,
+      controller: 'QRController',
+      controllerAs: '$ctrl',
+      resolve: {
+        eventId: () => {
+          return this.event._id;
+        }
+      }
+    });
   }
 }

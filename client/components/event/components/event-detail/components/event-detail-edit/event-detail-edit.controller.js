@@ -5,7 +5,7 @@ import Helper from './event-detail-edit.helper';
 
 export default class {
 
-  constructor($state, $scope, uiGmapGoogleMapApi, uiGmapIsReady, MapViewService) {
+  constructor($state, uiGmapGoogleMapApi, uiGmapIsReady, MapViewService) {
     'ngInject';
 
     angular.extend(this, {

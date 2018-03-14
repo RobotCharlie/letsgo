@@ -2,16 +2,14 @@ import angular from 'angular';
 import moment from 'moment';
 import _ from 'lodash';
 import Helper from './event-detail-display.helper';
-import QrTemplate from '../../templates/qr-code/qr-code.html';
 
 export default class {
 
-  constructor($state, $uibModal, uiGmapIsReady, Auth, MapViewService) {
+  constructor($state, uiGmapIsReady, Auth, MapViewService) {
     'ngInject';
 
     angular.extend(this, {
       $state,
-      $uibModal,
       Auth,
       helper: new Helper(Auth, uiGmapIsReady, MapViewService),
       errorMessages: [],
@@ -68,19 +66,5 @@ export default class {
       _.pull(event.favoritesBy, this.currentUser._id);
     }
     this.updateEvent(event);
-  }
-
-  openModal() {
-    this.$uibModal.open({
-      animation: true,
-      template: QrTemplate,
-      controller: 'QRController',
-      controllerAs: '$ctrl',
-      resolve: {
-        eventId: () => {
-          return this.event._id;
-        }
-      }
-    });
   }
 }
