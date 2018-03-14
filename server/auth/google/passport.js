@@ -20,7 +20,8 @@ export function setup(User, config) {
           role: 'user',
           username: profile.emails[0].value.split('@')[0],
           provider: 'google',
-          google: profile._json
+          google: profile._json,
+          imageUrl: profile._json.image.url,
         });
         user.save()
           .then(savedUser => done(null, savedUser))

@@ -1,4 +1,5 @@
-<div class="cg-simple-profile" ng-if="$ctrl.user._id">
-  <img ng-src="{{$ctrl.getSrcPicture()}}" alt="Profile Picture">
+<div class="cg-simple-profile padding" ng-if="$ctrl.user._id">
+  <img class="profile-image" ng-if="!$ctrl.user.imageUrl" ng-src="{{$ctrl.getSrcPicture()}}" alt="Profile Picture">
+  <img class="profile-image" ng-if="$ctrl.user.imageUrl" ng-src="{{$ctrl.user.imageUrl}}" alt="Profile Picture">
   <span class="padding-left" ng-bind="::$ctrl.user.name"></span>
 </div>

@@ -67,7 +67,7 @@ function handleError(res, statusCode) {
 // Gets a list of events
 export function index(req, res) {
   return Event.find()
-    .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -76,8 +76,8 @@ export function index(req, res) {
 // Gets a single Event from the DB
 export function show(req, res) {
   return Event.findById(req.params.id)
-    .populate({ path: 'host', select: ['_id', 'name'] })
-    .populate({ path: 'participants.user', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
+    .populate({ path: 'participants.user', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
@@ -124,7 +124,7 @@ export function destroy(req, res) {
 // Search Events from the DB by text
 export function search(req, res) {
   return Event.find({ name: { $regex: new RegExp(req.params.text, 'i') } })
-    .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -133,7 +133,7 @@ export function search(req, res) {
 // Hosting events from the DB
 export function hosting(req, res) {
   return Event.find({ host: req.params.host })
-    .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -142,7 +142,7 @@ export function hosting(req, res) {
 // Going events from the DB
 export function going(req, res) {
   return Event.find({ 'participants.user': req.params.participant })
-    .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -151,7 +151,7 @@ export function going(req, res) {
 // Favorite events from the DB
 export function favorite(req, res) {
   return Event.find({ favoritesBy: req.params.user })
-    .populate({ path: 'host', select: ['_id', 'name'] })
+    .populate({ path: 'host', select: ['_id', 'name', 'imageUrl'] })
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
