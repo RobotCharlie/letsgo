@@ -50,7 +50,8 @@
         <div class="col-lg-12">
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="participant in $ctrl.event.participants">
             <li>
-              <cg-simple-profile uib-popover="{{participant.note}}" popover-trigger="'mouseenter'" user="participant.user"></cg-simple-profile>
+              <cg-simple-profile uib-popover="{{participant.note}}" popover-trigger="'mouseenter'"
+                                 user="$ctrl.event.host" class="profile-image" show-name="true" size="2"></cg-simple-profile>
             </li>
           </ul>
         </div>

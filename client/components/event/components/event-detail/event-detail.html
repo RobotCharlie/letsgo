@@ -16,7 +16,7 @@
 
     <div ng-if="$ctrl.event.host._id">
       <label>Host: </label>
-      <cg-simple-profile user="$ctrl.event.host"></cg-simple-profile>
+      <cg-simple-profile user="$ctrl.event.host" class="profile-image" show-name="true" size="2"></cg-simple-profile>
     </div>
 
     <event-detail-display ng-if="$ctrl.isReadonly" event="$ctrl.event" on-update="$ctrl.saveOrUpdate($event)"></event-detail-display>
