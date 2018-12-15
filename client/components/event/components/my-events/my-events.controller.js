@@ -3,28 +3,35 @@ import Helper from './my-events.helper';
 
 export default class {
 
-  constructor($state, Auth, EventService) {
+  constructor($q, $state, Auth, EventService) {
     'ngInject';
 
     angular.extend(this, {
+      $q,
       $state,
       Auth,
       EventService,
       helper: new Helper(EventService),
-      searchText: null,
-      events: [],
+      myHostingEvents: [],
+      myGoingEvents: [],
       currentUser: null,
       loaded: false
     });
   }
 
   $onInit() {
-    this.searchText = this.$state.params.searchText;
-    this.helper.getEvents(this.searchText).then(events => {
-      this.events = events;
-      console.log(this.events);
-      this.currentUser = this.Auth.getCurrentUserSync();
-      this.loaded = true;
+    this.Auth.getCurrentUser().then(currentUser => {
+      this.currentUser = currentUser;
+      this.$q.all([
+        this.EventService.getHostingEventsByHost(this.currentUser),
+        this.EventService.getGoingEventsByParticipant(this.currentUser),
+        this.EventService.getFavoriteEventsByUser(this.currentUser)
+      ]).then(res => {
+        this.myHostingEvents = res[0];
+        this.myGoingEvents = res[1];
+        this.myFavoriteEvents = res[2];
+        this.loaded = true;
+      });
     });
   }
 }

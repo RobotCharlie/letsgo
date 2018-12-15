@@ -1,0 +1,14 @@
+<div type="text/ng-template">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Share Event</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <div>Download the scannable QR code by simply clicking it and send it to your friends who might also interested in this event!</div>
+    <div class="text-center">
+      <qrcode data="http://localhost:9000/event-detail/{{$ctrl.eventId}}" size="{{250}}" download></qrcode>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.close()">Done!</button>
+  </div>
+</div>

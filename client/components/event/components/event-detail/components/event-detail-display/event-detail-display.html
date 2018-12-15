@@ -1,4 +1,11 @@
 <div class="event-detail-display">
+  <button ng-if="$ctrl.isLoggedIn" class="btn btn-default action-btn pull-right"
+          ng-click="$ctrl.onFavoriteChange(!$ctrl.isFavorite, $ctrl.event)">
+    <i ng-if="$ctrl.isFavorite" class="material-icons red">favorite</i>
+    <i ng-if="!$ctrl.isFavorite" class="material-icons red">favorite_border</i>
+    <span ng-bind="$ctrl.event.favoritesBy.length"></span>
+  </button>
+
   <form name="eventForm" ng-if="$ctrl.event">
     <div class="padding-top">
       <label>Name</label>
@@ -17,7 +24,12 @@
 
     <div class="padding-top">
       <label>Where</label>
-      <div ng-bind="::$ctrl.event.where"></div>
+      <div ng-bind="::$ctrl.event.where.address"></div>
+    </div>
+    <div class="padding-top">
+      <ui-gmap-google-map class="angular-google-map-container" center='$ctrl.map.center' zoom='$ctrl.map.zoom'>
+        <ui-gmap-markers models="$ctrl.map.markers" coords="'coords'" idKey="'idKey'"></ui-gmap-markers>
+      </ui-gmap-google-map>
     </div>
 
     <div class="padding-top" ng-if="$ctrl.displayActionButtons">
@@ -38,7 +50,8 @@
         <div class="col-lg-12">
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="participant in $ctrl.event.participants">
             <li>
-              <cg-simple-profile uib-popover="{{participant.note}}" popover-trigger="'mouseenter'" user="participant.user"></cg-simple-profile>
+              <cg-simple-profile uib-popover="{{participant.note}}" popover-trigger="'mouseenter'"
+                                 user="$ctrl.event.host" class="profile-image" show-name="true" size="2"></cg-simple-profile>
             </li>
           </ul>
         </div>

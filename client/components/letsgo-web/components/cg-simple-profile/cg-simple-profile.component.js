@@ -6,6 +6,8 @@ export default {
   controller,
   transclude: true,
   bindings: {
-    user: '<'
+    user: '<',
+    showName: '<',
+    size: '<'
   }
 };

@@ -65,3 +65,5 @@ typings/
 config.gypi
 client/assets/fonts/font-awesome
 
+# Gulp
+dist/

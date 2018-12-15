@@ -6,10 +6,7 @@ export function setup(User, config) {
     clientID: config.facebook.clientID,
     clientSecret: config.facebook.clientSecret,
     callbackURL: config.facebook.callbackURL,
-    profileFields: [
-      'displayName',
-      'emails'
-    ]
+    profileFields: ['id', 'name', 'picture.type(large)', 'emails', 'displayName', 'about', 'gender'],
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOne({'facebook.id': profile.id}).exec()
@@ -23,7 +20,8 @@ export function setup(User, config) {
           email: profile.emails[0].value,
           role: 'user',
           provider: 'facebook',
-          facebook: profile._json
+          facebook: profile._json,
+          imageUrl: profile.photos[0].value
         });
         user.save()
           .then(savedUser => done(null, savedUser))
