@@ -7,9 +7,16 @@
       <cg-crumb ng-if="!$ctrl.isReadonly && !$ctrl.isNew" title="Edit Event"></cg-crumb>
     </cg-breadcrumbs>
 
+    <div class="btn-group pull-right padding-left" ng-if="$ctrl.event._id" uib-dropdown keyboard-nav>
+      <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary action-btn" uib-dropdown-toggle>Share&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+        <li role="menuitem" ng-click="$ctrl.openModal()"><a href="#">QR Code</a></li>
+      </ul>
+    </div>
+
     <div ng-if="$ctrl.event.host._id">
       <label>Host: </label>
-      <cg-simple-profile user="$ctrl.event.host"></cg-simple-profile>
+      <cg-simple-profile user="$ctrl.event.host" class="profile-image" show-name="true" size="2"></cg-simple-profile>
     </div>
 
     <event-detail-display ng-if="$ctrl.isReadonly" event="$ctrl.event" on-update="$ctrl.saveOrUpdate($event)"></event-detail-display>

@@ -22,7 +22,6 @@ export default class {
     this.searchText = this.$state.params.searchText;
     this.helper.getEvents(this.searchText).then(events => {
       this.events = events;
-      console.log(this.events);
       this.currentUser = this.Auth.getCurrentUserSync();
       this.loaded = true;
     });

@@ -37,7 +37,12 @@
 
     <div class="padding-top">
       <label for="where">Where</label>
-      <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where">
+      <input type="text" class="form-control" id="where" placeholder="Where To Go" required ng-model="$ctrl.event.where.address" ng-blur="$ctrl.geocode($ctrl.event.where.address)">
+    </div>
+    <div class="padding-top">
+      <ui-gmap-google-map class="angular-google-map-container" center='$ctrl.map.center' zoom='$ctrl.map.zoom'>
+        <ui-gmap-markers models="$ctrl.map.markers" coords="'coords'" idKey="'idKey'"></ui-gmap-markers>
+      </ui-gmap-google-map>
     </div>
 
     <div class="padding-top">
@@ -46,7 +51,7 @@
         <div class="col-lg-12">
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="participant in $ctrl.event.participants">
             <li>
-              <cg-simple-profile user="participant.user"></cg-simple-profile>
+              <cg-simple-profile user="participant.user" class="profile-image" show-name="true" size="2"></cg-simple-profile>
               <div ng-if="participant.user._id !== $ctrl.event.host._id">
                 <i class="material-icons pointer" ng-click="$ctrl.removeParticipant(participant)">delete_forever</i>
                 <small>Delete Participant</small>
