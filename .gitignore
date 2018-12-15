@@ -60,3 +60,8 @@ typings/
 # JetBrains
 .idea/
 **/.idea/workspace.xml
+
+# Custom
+config.gypi
+client/assets/fonts/font-awesome
+
